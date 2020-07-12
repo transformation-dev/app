@@ -7,5 +7,7 @@
     "test": "echo \"No tests yet...\""
   },
   "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {
+    "mime-types": "^2.1.27"
+  }
 }
