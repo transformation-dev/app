@@ -15,4 +15,4 @@ module.exports = async function (context, req) {
       body: "Please pass a name on the query string for GET or in the request body as a POST"
     };
   }
-};
+}
