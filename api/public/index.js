@@ -1,23 +1,24 @@
-var fs = require("fs")
-var mime = require('mime-types')
+const fs = require("fs")
+const path = require('path')
+const mime = require('mime-types')
 
 module.exports = function (context, req) {
 
-  var file = "index.html"
+  let file = "index.html"
 
   if (req.query.file) {
     file = req.query.file
   }
 
-  // file = file.replace(/\//g, "\\");
+  const fullPath = path.join(__dirname, '..', '..', 'public', file)
 
-  fs.readFile(__dirname + "/../../public/" + file, function (err, data) {
+  fs.readFile(fullPath, function (err, data) {
 
-    context.log('GET ' + "/" + file);
+    context.log('GET ' + "/" + file)
 
     if (!err) {
 
-      var contentType = mime.lookup(file)
+      const contentType = mime.lookup(file)
 
       context.res = {
         status: 200,
@@ -26,7 +27,7 @@ module.exports = function (context, req) {
         headers: {
           'Content-Type': contentType
         }
-      };
+      }
     } else {
 
       context.log("Error: " + err)
@@ -36,8 +37,8 @@ module.exports = function (context, req) {
         body: "Not Found.",
         headers: {
         }
-      };
+      }
     }
     context.done()
-  });
-};
+  })
+}
