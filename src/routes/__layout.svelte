@@ -1,45 +1,50 @@
 <script>
-	import Header from '$lib/header/Header.svelte';
-	import '../app.css';
+	// import Header from '$lib/header/Header.svelte';
+	import '../app.scss';
 </script>
 
-<Header />
+<!-- <Header /> -->
 
-<main>
+<nav class="navbar is-fixed-top">
+	<div class="navbar-brand">
+	  <a class="navbar-item" href="/#/">
+		<img src="MatrXCloseWhite.png" alt="MatrX Logo">
+	  </a>
+	</div>
+	<div class="navbar-menu">
+		<div class="navbar-start">
+		<a class="navbar-item" href="/">Something</a>
+		<a class="navbar-item" href="/">Something else</a>
+		<!-- {#each Object.entries(routes) as [route, value]}
+			{#if value.navbarLabel}
+			<a class="navbar-item" use:link class:is-active={$location === route} href={route}>
+				{value.userData.navbarLabel}
+			</a>
+			{/if}
+		{/each} -->
+		</div>
+		<div class="navbar-end">
+		<div class="navbar-item">
+			<div class="field is-grouped">
+			<p class="control">
+				<button id="logout" on:click={handleLogout} class="button is-rounded is-small"> 
+				<!-- <Icon data={signOut}/> -->
+				Logout
+				</button>
+			</p>
+			</div>
+		</div>
+		</div>
+	</div>
+</nav>
+
+<div class="slot">
 	<slot />
-</main>
+</div>
 
-<footer>
-	<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
-</footer>
-
-<style>
-	main {
-		flex: 1;
-		display: flex;
-		flex-direction: column;
-		padding: 1rem;
-		width: 100%;
-		max-width: 1024px;
-		margin: 0 auto;
-		box-sizing: border-box;
-	}
-
-	footer {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		padding: 40px;
-	}
-
-	footer a {
-		font-weight: bold;
-	}
-
-	@media (min-width: 480px) {
-		footer {
-			padding: 40px 0;
-		}
+<style type="text/scss">
+	@import '../variables.scss';
+	.slot {
+		padding-top: $navbar-height;
 	}
 </style>
