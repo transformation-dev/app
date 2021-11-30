@@ -1,6 +1,12 @@
 <script>
 	// import Header from '$lib/header/Header.svelte';
 	import '../app.scss';
+	import {mdiLogout} from '@mdi/js';
+	import Icon from '$lib/Icon.svelte';
+
+	function handleLogout() {
+		console.log('logging out')
+	}
 </script>
 
 <!-- <Header /> -->
@@ -13,23 +19,18 @@
 	</div>
 	<div class="navbar-menu">
 		<div class="navbar-start">
-		<a class="navbar-item" href="/">Something</a>
-		<a class="navbar-item" href="/">Something else</a>
-		<!-- {#each Object.entries(routes) as [route, value]}
-			{#if value.navbarLabel}
-			<a class="navbar-item" use:link class:is-active={$location === route} href={route}>
-				{value.userData.navbarLabel}
-			</a>
-			{/if}
-		{/each} -->
+		<a class="navbar-item" href="/">Home</a>
+		<a class="navbar-item" href="/play">Play</a>
 		</div>
 		<div class="navbar-end">
 		<div class="navbar-item">
 			<div class="field is-grouped">
 			<p class="control">
 				<button id="logout" on:click={handleLogout} class="button is-rounded is-small"> 
-				<!-- <Icon data={signOut}/> -->
-				Logout
+					<span class="icon-text">
+						<Icon size="is-large" path={mdiLogout} />
+						<span>Logout</span>
+					</span>
 				</button>
 			</p>
 			</div>

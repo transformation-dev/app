@@ -1,129 +1,142 @@
 // Write your global styles here, in SCSS syntax
-// Variables and mixins from the src/variables.scss file are available here without importing 
+// Variables and mixins from the src/variables.scss file are available here without importing
 // TODO: Whittle down the imports to just what we need
 
-@import 'bulma/sass/utilities/_all';
+@import "bulma/sass/utilities/_all";
 
-@import 'bulma/sass/base/_all';
+@import "bulma/sass/base/_all";
 
-@import 'bulma/sass/elements/_all';
+@import "bulma/sass/elements/_all";
 
-@import 'bulma/sass/form/_all';
+@import "bulma/sass/form/_all";
 
-@import 'bulma/sass/components/_all';
+@import "bulma/sass/components/_all";
 
-@import 'bulma/sass/grid/_all';
+@import "bulma/sass/grid/_all";
 
-@import 'bulma/sass/helpers/_all';
+@import "bulma/sass/helpers/_all";
 
-@import 'bulma/sass/layout/_all';
+@import "bulma/sass/layout/_all";
 
+// Bulmaswatch LUX theme overrides
+@if $bulmaswatch-import-font {
+	@import url("https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap");
+}
 
+body {
+	font-weight: 200;
+	letter-spacing: 1px;
+}
 
-// @import '@fontsource/fira-mono';
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	text-transform: uppercase;
+	letter-spacing: 3px;
+}
 
-// :root {
-// 	font-family: Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
-// 		Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-// 	--font-mono: 'Fira Mono', monospace;
-// 	--pure-white: #ffffff;
-// 	--primary-color: #b9c6d2;
-// 	--secondary-color: #d0dde9;
-// 	--tertiary-color: #edf0f8;
-// 	--accent-color: #ff3e00;
-// 	--heading-color: rgba(0, 0, 0, 0.7);
-// 	--text-color: #444444;
-// 	--background-without-opacity: rgba(255, 255, 255, 0.7);
-// 	--column-width: 42rem;
-// 	--column-margin-top: 4rem;
-// }
+.button {
+	transition: all 200ms ease;
+	text-transform: uppercase;
+	font-weight: 700;
 
-// body {
-// 	min-height: 100vh;
-// 	margin: 0;
-// 	background-color: var(--primary-color);
-// 	background: linear-gradient(
-// 		180deg,
-// 		var(--primary-color) 0%,
-// 		var(--secondary-color) 10.45%,
-// 		var(--tertiary-color) 41.35%
-// 	);
-// }
+	&.is-active,
+	&.is-focused,
+	&:active,
+	&:focus {
+		box-shadow: 0 0 0 2px rgba($button-focus-border-color, 0.25);
+	}
+	@each $name, $pair in $colors {
+		$color: nth($pair, 1);
+		$color-invert: nth($pair, 2);
 
-// body::before {
-// 	content: '';
-// 	width: 80vw;
-// 	height: 100vh;
-// 	position: absolute;
-// 	top: 0;
-// 	left: 10vw;
-// 	z-index: -1;
-// 	background: radial-gradient(
-// 		50% 50% at 50% 50%,
-// 		var(--pure-white) 0%,
-// 		rgba(255, 255, 255, 0) 100%
-// 	);
-// 	opacity: 0.05;
-// }
+		&.is-#{$name} {
+			&.is-active,
+			&.is-focused,
+			&:active,
+			&:focus {
+				border-color: $color;
+				box-shadow: 0 0 0 2px rgba($color, 0.25);
+			}
+		}
+	}
+}
 
-// #svelte {
-// 	min-height: 100vh;
-// 	display: flex;
-// 	flex-direction: column;
-// }
+.input,
+.textarea {
+	transition: all 200ms ease;
+	box-shadow: none;
+}
 
-// h1,
-// h2,
-// p {
-// 	font-weight: 400;
-// 	color: var(--heading-color);
-// }
+.progress,
+.tag {
+	border-radius: $radius;
+}
 
-// p {
-// 	line-height: 1.5;
-// }
+.card {
+	box-shadow: 0 0 0 1px $grey-lighter;
 
-// a {
-// 	color: var(--accent-color);
-// 	text-decoration: none;
-// }
+	.card-header {
+		box-shadow: 0 1px 0 0 $grey-lighter;
+	}
+}
 
-// a:hover {
-// 	text-decoration: underline;
-// }
+.navbar {
+	.navbar-link,
+	.navbar-item {
+		text-transform: uppercase;
+		font-weight: bold;
+	}
 
-// h1 {
-// 	font-size: 2rem;
-// 	text-align: center;
-// }
+	.has-dropdown .navbar-item {
+		text-transform: none;
+	}
 
-// h2 {
-// 	font-size: 1rem;
-// }
+	strong {
+		color: $white;
+	}
 
-// pre {
-// 	font-size: 16px;
-// 	font-family: var(--font-mono);
-// 	background-color: rgba(255, 255, 255, 0.45);
-// 	border-radius: 3px;
-// 	box-shadow: 2px 2px 6px rgb(255 255 255 / 25%);
-// 	padding: 0.5em;
-// 	overflow-x: auto;
-// 	color: var(--text-color);
-// }
+	@include until($navbar-breakpoint) {
+		.navbar-menu {
+			background-color: $primary;
+			border-radius: $radius;
+		}
+	}
+}
+.hero {
+	.navbar {
+		background-color: $navbar-background-color;
+	}
+	@each $name, $pair in $colors {
+		$color: nth($pair, 1);
+		$color-invert: nth($pair, 2);
 
-// input,
-// button {
-// 	font-size: inherit;
-// 	font-family: inherit;
-// }
+		&.is-#{$name} {
+			.navbar {
+				background-color: $color;
+			}
+		}
+	}
+}
 
-// button:focus:not(:focus-visible) {
-// 	outline: none;
-// }
+.notification {
+	@each $name, $pair in $colors {
+		$color: nth($pair, 1);
+		$color-invert: nth($pair, 2);
 
-// @media (min-width: 720px) {
-// 	h1 {
-// 		font-size: 2.4rem;
-// 	}
-// }
+		&.is-#{$name} {
+			a:not(.button) {
+				color: $color-invert;
+				text-decoration: underline;
+			}
+		}
+	}
+}
+
+.icon-text {
+	align-items: center;
+}
+
