@@ -6,10 +6,6 @@
 	import Counter from '$lib/Counter.svelte';
 </script>
 
-<svelte:head>
-	<title>Home</title>
-</svelte:head>
-
 <section class="p-6 has-text-centered has-background-black">
 	<img class="block" src="matrxlogowhite.png" alt="MatrX" />
 
@@ -19,3 +15,5 @@
 
 	<!-- <Counter /> -->
 </section>
+
+
