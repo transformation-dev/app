@@ -1,6 +1,8 @@
 import preprocess from 'svelte-preprocess';
 import cloudflare from '@sveltejs/adapter-cloudflare';
 
+const isDev = !!process.env.DEV;
+
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	kit: {
@@ -16,6 +18,9 @@ const config = {
 						additionalData: '@import "src/variables.scss";'
 					}
 				}
+			},
+			build: {
+				minify: !isDev,
 			}
 		}
 	},
