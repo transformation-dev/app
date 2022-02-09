@@ -11,6 +11,8 @@
 
 	<h2 class="block">
 		try editing <strong>src/routes/index.svelte</strong>
+
+		or maybe try adding new routes
 	</h2>
 
 	<!-- <Counter /> -->

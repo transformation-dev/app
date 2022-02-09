@@ -33,6 +33,7 @@ const config = {
 	scriptPath: '.svelte-kit/cloudflare/_worker.js',
 	bindings: {
 		ASSETS: {
+			kvNamespaces: ["SESSION"],
 			async fetch(req) {
 				try {
 					let { pathname } = new URL(req.url);
